@@ -1,0 +1,91 @@
+clc
+errorTrainingNew=[];
+errorTestNew=[];
+ann_all={};
+for i = 1 : 10
+    y = 3;
+    y_i =[y i]
+    [net,errorEgitim,errorTest] = pr9_ann_model(y,1);
+    ann_all{i}=net;
+    errorTrainingNew=[errorTrainingNew;errorEgitim];
+    errorTestNew=[errorTestNew;errorTest];
+end
+%tabloyu doldurmak için
+% min mean ve max eðitme/test hatalarý
+temp = [];
+egitimMin = -1;
+egitimMean = -1;
+egitimMax = -1;
+
+temp = min(errorTrainingNew);
+egitimMin = temp(:,[1]);
+
+temp = [];
+temp = mean(errorTrainingNew);
+egitimMean = temp(:,[1]);
+
+temp = [];
+temp = max(errorTrainingNew);
+egitimMax = temp(:,[2]);
+disp('EgitimMin - Egitim Ortalama - Egitim Max')
+[egitimMin egitimMean egitimMax]
+
+temp = [];
+temp = min(errorTestNew) ;
+testMin = temp(:,[1]);
+
+temp = [];
+temp = mean(errorTestNew) ;
+testMean = temp(:,[1]);
+
+temp = [];
+temp = max(errorTestNew);
+testMax = temp(:,[2]);
+
+disp('Test Min - Test Ortalama - Test Max')
+[testMin testMean testMax]
+save pr9_ann_model_3_300_50.mat
+
+errorTrainingNew=[];
+errorTestNew=[];
+ann_all={};
+for i=1:10
+    y = 3;
+    y_i=[y y i]
+    [net,errorEgitim,errorTest]=pr9_ann_model(y,2);
+    ann_all{i}=net;
+    errorTrainingNew=[errorTrainingNew;errorEgitim];
+    errorTestNew=[errorTestNew;errorTest];
+end
+%tabloyu doldurmak için
+% min mean ve max eðitme/test hatalarý
+temp = [];
+temp = min(errorTrainingNew);
+egitimMin = temp(:,[1]);
+
+temp = [];
+temp = mean(errorTrainingNew);
+egitimMean = temp(:,[1]);
+
+temp = [];
+temp = max(errorTrainingNew);
+egitimMax = temp(:,[2]);
+
+disp('EgitimMin - Egitim Ortalama - Egitim Max')
+[egitimMin egitimMean egitimMax]
+
+temp = [];
+temp = min(errorTestNew) ;
+testMin = temp(:,[1]);
+
+temp = [];
+temp = mean(errorTestNew) ;
+testMean = temp(:,[1]);
+
+temp = [];
+temp = max(errorTestNew);
+testMax = temp(:,[2]);
+
+disp('Test Min - Test Ortalama - Test Max')
+[testMin testMean testMax]
+save pr9_ann_model_3_3_300_50.mat
